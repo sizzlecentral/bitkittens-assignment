@@ -8,6 +8,15 @@ document.addEventListener("DOMContentLoaded", function() {
       method: 'GET',
       data: {},
       dataType: 'json'
+    }).done(function(responseData) {
+      var catList = responseData['cats'];
+      catList.forEach(function(cat) {
+        var image = document.createElement('img');
+        image.src = cat.photo;
+        image.alt = 'Photo of ' + cat.name;
+        var catBox = document.querySelector('.cat-box');
+        catBox.appendChild(image);
+      });
     });
   });
 
