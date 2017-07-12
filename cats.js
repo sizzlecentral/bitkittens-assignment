@@ -10,19 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
       dataType: 'json'
     }).done(function(responseData) {
       var catList = responseData['cats'];
+      var catCount = -1;
       catList.forEach(function(cat) {
+        catCount++;
         var image = document.createElement('img');
         image.src = cat.photo;
         image.alt = 'Photo of ' + cat.name;
-        var catBox = document.querySelector('.cat-box');
-        catBox.appendChild(image);
+        var catBox = document.querySelectorAll('.cat-box');
+        catBox[catCount].appendChild(image);
       });
     });
   });
-
-
-
-
-
-
 });
